@@ -1,5 +1,17 @@
 import request from '@/utils/request'
 
+export function logon(username, password) {
+  const data = {
+    username,
+    password
+  }
+  return request({
+    url: '/user/logon',
+    method: 'post',
+    data
+  })
+}
+
 export function login(username, password) {
   const data = {
     username,
