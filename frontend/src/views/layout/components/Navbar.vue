@@ -5,9 +5,10 @@
     <breadcrumb class="breadcrumb-container"/>
 
     <div class="right-menu">
-
       <template v-if="device!=='mobile'">
         <error-log class="errLog-container right-menu-item"/>
+
+        <author-github class="author-github-container right-menu-item"/>
 
         <el-tooltip :content="$t('navbar.screenfull')" effect="dark" placement="bottom">
           <screenfull class="screenfull right-menu-item"/>
@@ -54,6 +55,7 @@ import Hamburger from '@/components/Hamburger'
 import ErrorLog from '@/components/ErrorLog'
 import Screenfull from '@/components/Screenfull'
 import LangSelect from '@/components/LangSelect'
+import AuthorGithub from '@/components/AuthorGithub/index'
 
 export default {
   components: {
@@ -61,6 +63,7 @@ export default {
     Hamburger,
     ErrorLog,
     Screenfull,
+    AuthorGithub,
     LangSelect
   },
   data() {
@@ -83,8 +86,14 @@ export default {
       this.$store.dispatch('toggleSideBar')
     },
     logout() {
+      /*
       this.$store.dispatch('LogOut').then(() => {
         location.reload()// In order to re-instantiate the vue-router object to avoid bugs
+      })
+      */
+      this.$store.dispatch('FedLogOut')
+      this.$router.push({
+        path: '/login'
       })
     }
   }
@@ -121,6 +130,10 @@ export default {
     }
     .screenfull {
       height: 20px;
+    }
+    .author-github-container {
+      height: 20px;
+      vertical-align: 13px;
     }
     .international{
       vertical-align: top;

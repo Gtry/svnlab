@@ -25,46 +25,26 @@ export default {
   props: {
   },
   data() {
-    const validateGuster = (rule, value, callback) => {
+    const validateUsername = (rule, value, callback) => {
       if (!isvalidGuster(value)) {
         callback(new Error('请输入正确的用户名'))
       } else {
         callback()
       }
     }
-    const validateCode = (rule, value, callback) => {
-      if (this.code.value !== value) {
-        this.loginForm.code = ''
-        this.refreshCode()
-        callback(new Error('请输入正确的验证码'))
-      } else {
-        callback()
-      }
-    }
     return {
       loginForm: {
-        guster: 'guster',
+        username: 'guster',
         password: '123456'
       },
-      checked: false,
-      code: {
-        src: '',
-        value: '',
-        len: 4,
-        type: 'text'
-      },
+      checked: true,
       loginRules: {
         username: [
-          { required: true, trigger: 'blur', validator: validateGuster }
+          { required: true, trigger: 'blur', validator: validateUsername }
         ],
         password: [
           { required: true, message: '请输入密码', trigger: 'blur' },
           { min: 6, message: '密码长度最少为6位', trigger: 'blur' }
-        ],
-        code: [
-          { required: true, message: '请输入验证码', trigger: 'blur' },
-          { min: 4, max: 4, message: '验证码长度为4位', trigger: 'blur' },
-          { required: true, trigger: 'blur', validator: validateCode }
         ]
       },
       passwordType: 'password'
@@ -84,9 +64,12 @@ export default {
     handleLogin() {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
-          this.$store.dispatch('Login', this.loginForm).then(res => {
-            this.$router.push({ path: '/dashboard' })
-          })
+          if (this.loginForm.password === '123456') {
+            alert('Guster login success!')
+            this.$store.dispatch('Login', this.loginForm).then(res => {
+              this.$router.push({ path: '/dashboard' })
+            })
+          }
         }
       })
     }

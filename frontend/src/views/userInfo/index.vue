@@ -1,5 +1,7 @@
 <template>
   <div class="app-container">
+    <switch-roles @change="handleRolesChange" />
+
     <el-row :gutter="20">
       <el-col :span="8">
         <div class="user_img" >
@@ -23,8 +25,11 @@
           </h2>
           <div v-if="editable" class="user_info_form">
             <el-form :model="personalInfo" label-position="right" label-width="100px">
-              <el-form-item label="域账号">
+              <el-form-item label="用户账号">
                 <el-input v-model="personalInfo.username" disabled=""/>
+              </el-form-item>
+              <el-form-item label="用户权限：">
+                <el-input v-model="personalInfo.roles" disabled=""/>
               </el-form-item>
               <el-form-item label="真实姓名">
                 <el-input v-model="personalInfo.truename"/>
@@ -49,8 +54,11 @@
           </div>
           <div v-else class="user_info_text">
             <el-form :model="personalInfo" label-position="right" label-width="100px">
-              <el-form-item label="域账号：">
+              <el-form-item label="用户账号：">
                 {{ personalInfo.username }}
+              </el-form-item>
+              <el-form-item label="用户权限：">
+                {{ personalInfo.roles }}
               </el-form-item>
               <el-form-item label="真实姓名：">
                 {{ personalInfo.truename }}
@@ -70,27 +78,39 @@
         </div>
       </el-col>
     </el-row>
-    <el-row :gutter="20" style="margin-top:20px;">
-      <el-col :span="8">
-        <div id="income"/>
-      </el-col>
-      <el-col :span="12">
-        <div id="interest"/>
-      </el-col>
-    </el-row>
+
+    <div :key="'checkPermission'+key" style="margin-top:30px;">
+      <code>In some cases it is not suitable to use v-permission, such as element Tab component  which can only be achieved by manually setting the v-if.
+        <br> e.g.
+      </code>
+      <el-tabs type="border-card">
+        <el-tab-pane label="Link">
+          <a href="http://www.dahuatech.com/" class="link-type">{{ $t('route.permissionApply') }}</a>
+          <br>
+          <a href="http://www.dahuatech.com/" class="link-type">{{ $t('route.svnShows') }}</a>
+        </el-tab-pane>
+      </el-tabs>
+    </div>
+    <div style="margin-top:30px;">
+      <code>Console test case
+        <br> e.g.
+      </code>
+    </div>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
-var echarts = require('echarts')
+import checkPermission from '@/utils/permission' // 权限判断函数
 
 export default {
   data() {
     return {
       editable: false,
       personalInfo: {},
-      newImageUrl: require('@/assets/images/profile_photos/male_1.jpg')
+      roles: '',
+      newImageUrl: require('@/assets/images/profile_photos/male_1.jpg'),
+      key: 1
       // personalInfo_init:store.getters.userInfo
     }
   },
@@ -103,50 +123,18 @@ export default {
   mounted() {
     var vm = this
     vm.resetForm()
-
-    // 基于准备好的dom，初始化echarts实例
-    var myChart1 = echarts.init(document.getElementById('income'))
-    var myChart2 = echarts.init(document.getElementById('interest'))
-    // 绘制收入图表
-    myChart1.setOption({
-      title: { text: '最近收入' },
-      tooltip: {},
-      xAxis: {
-        data: ['3月', '4月', '5月', '6月', '7月', '8月']
-      },
-      yAxis: {},
-      series: [{
-        name: '收入',
-        type: 'bar',
-        data: [800, 1200, 1360, 1100, 1100, 1800]
-      }]
-    })
-    // 绘制兴趣图表
-    myChart2.setOption({
-      title: { text: '兴趣爱好' },
-      series: [
-        {
-          name: '兴趣',
-          type: 'pie',
-          radius: '55%',
-          data: [
-            { value: 500, name: '吃饭' },
-            { value: 250, name: '睡觉' },
-            { value: 100, name: '打豆豆' },
-            { value: 100, name: '看电影' },
-            { value: 50, name: '其他' }
-          ]
-        }
-      ]
-    })
   },
   methods: {
+    handleRolesChange() {
+      this.key++
+    },
     // 提交表单
     submitForm() {
       var vm = this
       vm.editable = false
       var par = {
         'username': vm.personalInfo.username,
+        'roles': vm.personalInfo.roles,
         'truename': vm.personalInfo.truename,
         'sex': vm.personalInfo.sex,
         'email': vm.personalInfo.email,
@@ -180,7 +168,8 @@ export default {
         this.$message.error('上传头像图片大小不能超过 2MB!')
       }
       return isJPG && isLt2M
-    }
+    },
+    checkPermission
   }
 }
 </script>

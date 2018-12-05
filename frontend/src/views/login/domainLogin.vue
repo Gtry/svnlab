@@ -46,7 +46,7 @@ export default {
         username: '',
         password: ''
       },
-      checked: false,
+      checked: true,
       code: {
         src: '',
         value: '',

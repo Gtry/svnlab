@@ -1,9 +1,13 @@
 /**
- * Created by jiachenpan on 16/11/18.
+ * Created by kaige.yang@outlook.com(https://github.com/Gtry) on 2018/12/01.
+ * Base on:
+ *     jiachenpan(https://github.com/PanJiaChen)
  */
-
 export function isvalidGuster(str) {
-  return str.trim() === 'guster'
+  if (str.trim() === 'guster') {
+    return true
+  }
+  return false
 }
 
 export function isvalidUsername(str) {

@@ -1,0 +1,50 @@
+windows软件安装
+1. Google Chrome浏览器
+2. Sublime Text3
+	ctags plugin: 代码追踪功能
+3. notepad++
+4. Git
+5. Visio Studio Code
+6. clover
+7. Shadowsocks
+8. xshell5
+9. Beyond_Compare(文件比较工具)
+10. 百度云及快速下载工具PanDownload
+11. 虚拟机管理软件(VirtualBox/VMware)
+
+Windows开发环境安装包
+1. JS相关
+[node-v10.13.0-x64](https://nodejs.org/dist/v10.13.0/node-v10.13.0-x64.msi)
+	node version: v10.13.0
+	npm version: 6.4.1
+
+	设置环境变量
+	1. 设置用户变量NODE_PATH: D:\WindowsSoftware\nodejs\node_modules
+	配置用户变量Path,将用户PATH中的npm相关的设置修改成: D:\WindowsSoftware\nodejs\node_global
+	2. 配置npm
+	npm config set cache "D:\WindowsSoftware\nodejs\node_cache"
+	npm config set prefix "D:\WindowsSoftware\nodejs\node_global"
+
+[vue-cli]()
+	npm install -g vue-cli
+	version: vue-cli@2.9.6
+
+2. Python相关
+[python-3.7.1-amd64](https://www.python.org/ftp/python/3.7.1/python-3.7.1-amd64.exe)
+	python version: Python 3.7.1
+[pip18.1](https://bootstrap.pypa.io/get-pip.py)
+	python get-pip.py
+[pytz]()
+	pytz version: 2018.7
+[setuptools]()
+	setuptools: 39.0.1
+[django](): pip install 2.0.9
+	django version: 2.0.9
+
+3. 数据库相关
+[mysql-installer-community-5.7.24.0]()
+	安装报错: 无法定位程序输入点fesetround于动态链接库MSVCR120.dll上
+	解决方法: 下载 Microsoft Visual C++ 2013 Redistributable Package 安装(vcredist_x64.exe)
+	下载地址: https://support.microsoft.com/en-us/help/3138367/update-for-visual-c-2013-and-visual-c-redistributable-package
+	Chinese版本X64系统下载地址: http://download.microsoft.com/download/b/e/8/be8a5444-cdd8-4d3d-ae09-a0979b05aee3/vcredist_x64.exe
+

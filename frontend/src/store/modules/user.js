@@ -9,6 +9,7 @@ const user = {
     roles: [],
     userInfo: {
       username: 'guster',
+      roles: '',
       truename: '',
       sex: 'male',
       email: 'xxx@dahuatech.com',
@@ -43,8 +44,18 @@ const user = {
       if (loginForm.username === 'guster') {
         return new Promise((resolve) => {
           var gusterToken = 'gusterToken'
+          const userInfo = {
+            username: 'guster',
+            roles: 'guster',
+            truename: 'guster',
+            sex: 'male',
+            email: 'xxx@dahuatech.com',
+            introduction: 'guster account, issue',
+            avatar: ''
+          }
           setToken(gusterToken)
           commit('SET_TOKEN', gusterToken)
+          commit('SET_USERINFO', userInfo)
           resolve()
         })
       } else {
@@ -54,6 +65,7 @@ const user = {
             const data = response.data
             setToken(data.token)
             commit('SET_TOKEN', data.token)
+            commit('SET_USERINFO', data.userInfo)
             resolve()
           }).catch(error => {
             reject(error)

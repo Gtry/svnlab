@@ -2,9 +2,12 @@
   <div class="login-container pull-height" @keyup.enter.native="handleLogin">
     <div class="login-info text-white animated fadeInLeft">
       <div class="logo" style="margin-top:-426px">
-        <img src="@/assets/images/logo.png" width="160px" height="160px" alt="logo" style="vertical-align: middle;">
+        <img src="@/assets/images/logo_images/logo.png" width="160px" height="160px" alt="logo" style="vertical-align: middle;">
       </div>
-      <h2 class="login-info-title">{{ website.info.title }}</h2>
+      <h2 class="login-info-title">
+        <img src="https://www.dahuatech.com/bocweb/web/img/logo.png" width="100px" height="30px" alt="logo" style="vertical-align: middle;">
+        {{ website.info.title }}
+      </h2>
       <ul class="login-info-list">
         <li v-for="item in website.info.list" :key="item.text" class="login-info-item">
           <i class="el-icon-check"/>&nbsp;{{ item }}
@@ -79,6 +82,8 @@ export default {
 }
 .login-info-title {
   line-height: 90px;
+  font-size: 50px;
+  color: #76838f;
 }
 .login-info-item {
   font-size: 14px;
