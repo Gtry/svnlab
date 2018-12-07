@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 
 import os
 import sys
+# import ldap
+# from django_auth_ldap.config import LDAPSearch
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -29,7 +31,11 @@ SECRET_KEY = '+h1@&w0l7minl63da^l&7t3+oqt66(e@f59-r3y9fnebv*wt*q'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+# ALLOWED_HOSTS = [
+#     "10.6.13.34",
+#     "localhost",
+#     "127.0.0.1"
+# ]
 
 # Application definition
 
@@ -97,10 +103,10 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'svninfo',
         'USER': 'root',
-        'PASSWORD': 'root',
-        'HOST': '127.0.0.1',
-        # 'PASSWORD': 'mysql123'
-        # 'HOST': '10.6.5.123'
+        # 'PASSWORD': 'root',
+        # 'HOST': '127.0.0.1',
+        'PASSWORD': 'mysql123',
+        'HOST': '10.6.5.123',
         'PORT': '3306',
     }
 }
