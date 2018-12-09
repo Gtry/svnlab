@@ -11,11 +11,8 @@ export function isvalidGuster(str) {
 }
 
 export function isvalidUsername(str) {
-  if (str.indexOf('dahuatech\\') === 0) {
-    var jobNumber = str.substring(10)
-    if (jobNumber.replace(/\D/g, '').length === 5) {
-      return true
-    }
+  if (str.replace(/\D/g, '').length === 5) {
+    return true
   }
   return false
 }

@@ -27,7 +27,7 @@ export default {
   data() {
     const validateUsername = (rule, value, callback) => {
       if (!isvalidUsername(value)) {
-        callback(new Error('请输入正确的域用户: dahuatech\\工号'))
+        callback(new Error('请输入正确的域用户'))
       } else {
         callback()
       }
@@ -85,7 +85,7 @@ export default {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
           this.$store.dispatch('Login', this.loginForm).then(res => {
-            this.$router.push({ path: '/dashboard/dashboard' })
+            this.$router.push({ path: '/dashboard' })
           })
         }
       })

@@ -32,34 +32,28 @@ export const constantRouterMap = [
     ]
   },
   {
-    path: '/login',
+    path: '',
     component: () => import('@/views/login/index'),
     name: 'login',
     hidden: true
   },
   {
-    path: '',
+    path: '/dashboard',
     component: Layout,
     redirect: '/dashboard',
-    name: 'Dashboard',
-    meta: { title: 'Dashboard', icon: 'dashboard' },
     children: [
       {
-        path: 'dashboard',
+        path: '',
         component: () => import('@/views/dashboard/index'),
         name: 'Dashboard',
-        meta: {
-          title: 'dashboard',
-          icon: 'dashboard',
-          noCache: true
-        }
+        meta: { title: 'dashboard', icon: 'dashboard', noCache: true }
       }
     ]
   },
   {
     path: '/permissionCheck',
     component: Layout,
-    redirect: '/dashboard',
+    redirect: '/permissionCheck',
     name: 'permissionCheck',
     meta: { title: 'permissionCheck', icon: 'tree' },
     children: [
@@ -86,15 +80,12 @@ export const constantRouterMap = [
     ]
   },
   {
-    path: '/permissionApply',
+    path: 'external-link',
     component: Layout,
-    redirect: '/dashboard',
     children: [
       {
-        path: '',
-        component: () => import('@/views/permissionApply'),
-        name: 'permissionApply',
-        meta: { title: 'permissionApply', icon: 'link', noCache: true }
+        path: 'https://www.dahuatech.com/',
+        meta: { title: 'permissionApply', icon: 'link' }
       }
     ]
   },
@@ -127,7 +118,7 @@ export const constantRouterMap = [
   {
     path: '/about',
     component: Layout,
-    redirect: '/dashboard',
+    redirect: '/about',
     name: 'about',
     meta: { title: 'about', icon: 'guide' },
     children: [
@@ -179,13 +170,6 @@ export const developerRouterMap = []
 export const masterRouterMap = []
 */
 
-/*
-export default new Router({
-  mode: 'history',
-  scrollBehavior: () => ({ y: 0 }),
-  routes: constantRouterMap
-})
-*/
 const router = new Router({
   mode: 'history',
   scrollBehavior: () => ({ y: 0 }),

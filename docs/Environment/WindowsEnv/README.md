@@ -4,7 +4,7 @@
 * 参考1：[VSCode 插件离线安装](https://blog.csdn.net/wangwei703/article/details/54020712)
 * 参考2：[简单的 VSCode 插件离线安装方法](https://blog.csdn.net/u012814856/article/details/80684376)
 
-## 插件安装
+## VSCode插件安装配置
 ### JavaScript
 
 1.安装vetur，参考[如何优雅地使用 VSCode 来编辑 vue 文件](https://www.clarencep.com/2017/03/18/edit-vue-file-via-vscode)

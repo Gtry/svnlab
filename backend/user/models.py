@@ -2,7 +2,7 @@ from django.db import models
 from datetime import date
 
 # Create your models here.
-class UserInfo(models.Model):
+class User(models.Model):
     """
         state: {
             token: getToken(),
@@ -21,7 +21,8 @@ class UserInfo(models.Model):
     password = models.CharField(max_length=64)
     truename = models.CharField(max_length=64)
     sex = models.CharField(verbose_name='sex', max_length=5, choices=(('male','male'),('female','female')),default='male')
-    email = models.EmailField()
+    email = models.EmailField(unique=True)
+    telephone = models.CharField(max_length=64, unique=True)
     introduction = models.CharField(max_length=512)
     profile_photos_height = models.PositiveIntegerField(default=75)
     profile_photos_width = models.PositiveIntegerField(default=75)
