@@ -93,7 +93,7 @@ export default {
       */
       this.$store.dispatch('FedLogOut')
       this.$router.push({
-        path: '/login'
+        path: '/'
       })
     }
   }

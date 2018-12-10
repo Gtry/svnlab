@@ -28,12 +28,12 @@ SECRET_KEY = '+h1@&w0l7minl63da^l&7t3+oqt66(e@f59-r3y9fnebv*wt*q'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-# ALLOWED_HOSTS = [
-#     "10.6.13.34",
-#     "localhost",
-#     "127.0.0.1"
-# ]
+# ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "10.6.13.34",
+    "localhost",
+    "127.0.0.1"
+]
 
 # Application definition
 
@@ -91,7 +91,7 @@ DATABASES = {
         # 'ENGINE': 'django.db.backend.sqlite3',
         # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'AuthAdmin',
+        'NAME': 'svnlab',
         'USER': 'root',
         'PASSWORD': 'root',
         # 'HOST': '127.0.0.1',

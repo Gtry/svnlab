@@ -5,6 +5,13 @@ from django.http import JsonResponse
 import ldap
 from rest_framework.exceptions import APIException
 
+import os
+import sys
+ROOTPATH = os.path.dirname(os.path.dirname(od.path.abspath(__file__)))
+sys.path.append(ROOTPATH)
+from utils import logger
+LOG = logger.Logger(__file__, 'log/{0}.log'.format(os.path.basename(os.path.dirname(os.path.abspath(__file__))).split('.')[0]), 'INFO').getInstance()
+
 # Authentication: LDAP two
 # ldap的地址和端口号
 AUTH_LDAP_SERVER_URI = 'ldap://10.1.2.180:389'
@@ -24,7 +31,7 @@ AUTH_LDAP_USER_ATTR_MAP = None
 # }
 
 class MyLdap(object):
-    def __init(self, server_uri, username='', password=''):
+    def __init__(self, server_uri, username='', password=''):
         self.server_uri = server_uri
         self.ldap_obj = None
         self.ldap_connect(username, password)
@@ -36,7 +43,7 @@ class MyLdap(object):
         if username and not password:
             raise APIException("Please input password!")
         try:
-            username = '{0}/{1}'.format(AUTH_DOMAIN, username)
+            username = '{0}\\{1}'.format(AUTH_DOMAIN, username)
             rest = conn.simple_bind_s(username, password)
         except ldap.SERVER_DOWN:
             raise APIException("Can't connect to LDAP!")

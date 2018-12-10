@@ -80,12 +80,15 @@ export const constantRouterMap = [
     ]
   },
   {
-    path: 'external-link',
+    path: '/permissionApply',
     component: Layout,
+    redirect: '/permissionApply',
     children: [
       {
-        path: 'https://www.dahuatech.com/',
-        meta: { title: 'permissionApply', icon: 'link' }
+        path: '',
+        component: () => import('@/views/permissionApply'),
+        name: 'permissionApply',
+        meta: { title: 'permissionApply', icon: 'link', noCache: true }
       }
     ]
   },
@@ -160,15 +163,27 @@ export const constantRouterMap = [
       }
     ]
   }
+  /**
+  {
+    path: 'external-link',
+    component: Layout,
+    children: [
+      {
+        path: 'https://www.dahuatech.com/',
+        meta: { title: 'permissionApply', icon: 'link' }
+      }
+    ]
+  },
+  */
 ]
 
 export const asyncRouterMap = []
 
-/*
-export const reporterRouterMap = []
-export const developerRouterMap = []
-export const masterRouterMap = []
-*/
+/**
+ * export const reporterRouterMap = []
+ * export const developerRouterMap = []
+ * export const masterRouterMap = []
+ */
 
 const router = new Router({
   mode: 'history',

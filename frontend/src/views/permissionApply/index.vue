@@ -1,9 +1,9 @@
 <template>
   <section>
     <div>
-      <iframe src="http://apptool/index.html" margin="0" scrolling="auto" width="100%" frameborder="0" height="700px"/>
+      <iframe src="http://office.dahuatech.com/t_BOS230001092/officeedit" margin="0" scrolling="auto" width="100%" frameborder="0" height="700px"/>
     </div>
-    进入<a href="http://apptool/index.html" class="link-type">阳光视窗</a>
+    进入<a href="http://office.dahuatech.com/t_BOS230001092/officeedit" class="link-type">门户</a>
 
     <div class="footer">
       <a href="">2018 大华技术服务有限公司 版权说明</a>

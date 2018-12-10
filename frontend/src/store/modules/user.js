@@ -16,7 +16,6 @@ const user = {
       introduction: '',
       avatar: ''
     }
-    // userInfo: null
   },
 
   mutations: {
@@ -62,11 +61,13 @@ const user = {
         // 域账号密码登陆
         return new Promise((resolve, reject) => {
           login(loginForm.username, loginForm.password).then(response => {
-            const data = response.data
-            setToken(data.token)
-            commit('SET_TOKEN', data.token)
-            commit('SET_USERINFO', data.userInfo)
-            resolve()
+            if (response.data.status === 200) {
+              const data = response.data.data
+              setToken(data.token)
+              commit('SET_TOKEN', data.token)
+              commit('SET_USERINFO', data.userInfo)
+              resolve()
+            }
           }).catch(error => {
             reject(error)
           })

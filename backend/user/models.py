@@ -21,7 +21,7 @@ class User(models.Model):
     password = models.CharField(max_length=64)
     truename = models.CharField(max_length=64)
     sex = models.CharField(verbose_name='sex', max_length=5, choices=(('male','male'),('female','female')),default='male')
-    email = models.EmailField(unique=True)
+    email = models.EmailField()
     telephone = models.CharField(max_length=64, unique=True)
     introduction = models.CharField(max_length=512)
     profile_photos_height = models.PositiveIntegerField(default=75)
